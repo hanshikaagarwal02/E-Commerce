@@ -1,0 +1,79 @@
+
+<% layout('layouts/boilerplate')%>
+<%- include('../partials/navbar') %>
+    
+    
+    <div class="row">
+    <div class="col-6 mx-auto">
+        <h1>New Product Form</h1>
+    <form action="/products" method="POST" novalidate class="needs-validation">
+        <div class="mb-3">
+            <label for="naam">Name: </label>
+            <input type="text" name="name" id="naam" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a name.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="pic">Image: </label>
+            <input type="text" name="img" id="pic" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a image url.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="daam">Price: </label>
+            <input type="text" name="price" id="daam" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a price.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="des">Description: </label>
+           <textarea name="desc" id="des" rows="3" required></textarea>
+           <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please write Description.
+          </div>
+        </div>
+        <button type="submit">Add Product</button>
+    </form>
+    </div>
+</div>
+
+
+<!-- --------validation--------------- -->
+ <!-- iife function(immediately invoke functional expression)---immediately invoke -->
+<script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+</body>
+</html>

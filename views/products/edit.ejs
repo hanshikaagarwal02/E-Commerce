@@ -1,0 +1,76 @@
+
+<% layout('layouts/boilerplate')%>
+<%- include('../partials/navbar') %>
+    
+    
+    <div class="row">
+    <div class="col-6 mx-auto">
+        <h1>Edit Product Form</h1>
+    <form action="/products/<%=foundproduct._id %>?_method=PATCH" method="POST" class="needs-validation">
+        <div class="mb-3">
+            <label for="naam">Name: </label>
+            <input type="text" name="name" id="naam" value="<%=foundproduct.name %>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a name.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="pic">Image: </label>
+            <input type="text" name="img" id="pic" value="<%=foundproduct.img %>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a image url.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="daam">Price: </label>
+            <input type="text" name="price" id="daam" value="<%=foundproduct.price %>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please choose a price.
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="des">Description: </label>
+           <textarea name="desc" id="des" rows="3"><%=foundproduct.desc%></textarea>
+           <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please write descriptin
+              </div>
+        </div>
+        <button type="submit">Edit Product</button>
+    </form>
+    </div>
+</div>
+
+<script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+</body>
+</html>
